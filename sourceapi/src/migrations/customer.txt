@@ -1,0 +1,100 @@
+CREATE TABLE IF NOT EXISTS accounts (
+  `id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `refresh_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `token_expires` bigint unsigned DEFAULT NULL,
+  `is_deleted` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `newPassword` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `oldPassword` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `role_id` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `email` (`email`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE accounts
+ADD avatar VARCHAR(255) NOT NULL;
+
+CREATE TABLE IF NOT EXISTS modules  (
+  id int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  name varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  module varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  icon varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL default '',
+  status TINYINT UNSIGNED DEFAULT 0,
+  is_deleted TINYINT UNSIGNED DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf16 COLLATE = utf16_general_ci  ROW_FORMAT = Dynamic;
+ALTER TABLE modules ADD COLUMN name_cmswebsite text CHARACTER SET utf16 COLLATE utf16_general_ci DEFAULT NULL;
+ALTER TABLE modules ADD COLUMN sort_order int UNSIGNED DEFAULT 0;
+ALTER TABLE modules ADD COLUMN is_function TINYINT UNSIGNED DEFAULT 0;
+
+CREATE TABLE IF NOT EXISTS roles (
+  id int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  name varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  permissions text CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  status TINYINT UNSIGNED DEFAULT 0,
+  is_deleted TINYINT UNSIGNED DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf16 COLLATE = utf16_general_ci  ROW_FORMAT = Dynamic;
+
+ALTER TABLE roles ADD COLUMN level TINYINT UNSIGNED DEFAULT 0;
+ALTER TABLE roles ADD COLUMN db_filters text CHARACTER SET utf16 COLLATE utf16_general_ci;
+
+CREATE TABLE IF NOT EXISTS logs (
+	id int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  account_id text,
+  type text,
+  module text,
+	item_id text,
+	status smallint,
+  detail text,
+	is_deleted boolean,
+	created_at timestamp,
+	updated_at timestamp,
+  deleted_at TIMESTAMP DEFAULT NULL,
+  PRIMARY KEY(id)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf16 COLLATE = utf16_general_ci ROW_FORMAT = Dynamic;
+
+
+CREATE TABLE IF NOT EXISTS categories (
+  id int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  name varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  status TINYINT UNSIGNED DEFAULT 0,
+  is_deleted TINYINT UNSIGNED DEFAULT 0,
+  parent_id int NOT NULL DEFAULT '0',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf16 COLLATE = utf16_general_ci  ROW_FORMAT = Dynamic;
+
+CREATE TABLE IF NOT EXISTS news (
+  id int(10) ZEROFILL NOT NULL AUTO_INCREMENT,
+  title varchar(255) NULL,
+  slug VARCHAR(255) NOT NULL,
+  category_id int NOT NULL DEFAULT '0',
+  status TINYINT UNSIGNED DEFAULT 0,
+  image_url VARCHAR(255) NULL,
+  content text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  published_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  is_deleted TINYINT UNSIGNED DEFAULT 0,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  deleted_at TIMESTAMP DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf16 COLLATE = utf16_general_ci  ROW_FORMAT = Dynamic;
+
+ALTER TABLE news
+ADD forcus tinyint(1) DEFAULT 0;
+ALTER TABLE news
+ADD tag_id VARCHAR(255) NOT NULL;

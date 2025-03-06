@@ -1,0 +1,14 @@
+# Dependency directories
+node_modules
+package-*
+
+# Dist folder (code after build)
+*dist
+_next
+
+# Remove ENV Config
+.env.production
+.env.development
+
+# Remove Editor
+.DS_Store

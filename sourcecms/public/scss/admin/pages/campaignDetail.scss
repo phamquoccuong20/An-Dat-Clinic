@@ -1,0 +1,599 @@
+@import 
+	'../../core/abstracts/variables';
+
+.campaignDetail{
+	padding: 24px;
+
+	.campaignDetail-head{
+		display: flex;
+
+		.follower{
+			background-color: #fff;
+			height: 100%;
+			padding: 20px;
+			@include border-radius(4px);
+
+			h5{
+				font-size: 1.6rem;
+				text-transform: capitalize;
+			}
+
+			.list{
+				display: flex;
+				margin-top: 15px;
+
+				.item{
+					flex: 1 1;
+					display: flex;
+					align-items: center;
+
+					i{
+						color: #e9ecef;
+						font-size: 3rem;
+					}
+
+					.info{
+						color: #b7c1cf;
+						margin-left: 5px;
+						padding-top: 2px;
+					}
+
+					&.active{
+	                    cursor: default;
+
+	                    i{
+	                        &.fa-tiktok{
+	                            color: #000;
+	                        }
+
+	                        &.fa-facebook-square{
+	                            color: #385599;
+	                        }
+
+	                        &.fa-youtube{
+	                            color: #f70000;
+	                        }
+
+	                        &.fa-instagram{
+	                            color: #d81f53;
+	                        }
+
+	                        &.fa-twitch{
+	                            color: #8c44f7;
+	                        }
+
+	                        &.fa-twitter{
+	                            color: #1c96e8;
+	                        }
+	                    }
+
+	                    .info{
+							color: getColor(primary-text);
+							margin-left: 5px;
+							padding-top: 2px;
+						}
+	                }
+				}
+			}
+		}
+
+		.money{
+			background-color: #fff;
+			height: 100%;
+			padding: 20px;
+			@include border-radius(4px);
+
+			h5{
+				font-size: 1.6rem;
+				text-transform: capitalize;
+			}
+
+			.body{
+				font-size: 1.8rem;
+				color: $primary;
+				margin-top: 10px;
+			}
+		}
+	}/* campaignDetail-head */
+
+	.campaignDetail-body{
+
+		.card-userAdmin{
+
+			.card-body{
+
+				i{
+					font-size: 2rem;
+					color: #e9ecef;
+				}
+			}
+		}
+
+		.status-remove{
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			border: 1px solid #cd1142;
+			color: #cd1142;
+			text-transform: capitalize;
+			font-size: 1rem;
+			padding: 1px 10px 0;
+			z-index: 80;
+			@include border-radius(3px);
+		}
+
+		.row{
+
+			>[class^="col-"]{
+				margin-top: 24px;
+			}
+		}
+
+		.card-head{
+			padding: 30px 25px 0;
+		}
+
+		.card-body{
+			padding: 20px 25px 5px;
+
+			[class^="col"]{
+				cursor: inherit;
+			}
+		}
+
+		.card-footer{
+			padding: 15px 25px 10px;
+
+			.campaignsSlideOne{
+				background-color: #f6f8fb;
+				border: 1px solid #cbd3dc;
+				text-align: center;
+				padding: 10px 5px;
+				cursor: pointer;
+				@include border-radius(3px);
+
+				&:hover,&.active{
+					background-color: #d3ddeb;
+				}
+
+				p{
+					color: #728598;
+					font-size: 1rem;
+
+					&.strong{
+						color: #395f83;
+						font-weight: 800;
+						text-transform: uppercase;
+					}
+				}
+			}
+
+			.cardSlider{
+				position: relative;
+
+				.swiper{
+					position: static;
+
+					.swiper-button-next{
+						position: absolute;
+						right: -27px;
+						top: 50%;
+						width: 30px;
+						height: 30px;
+						z-index: 5;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						cursor: pointer;
+						@include translate(0,-50%);
+
+						&::before{
+							content: '\f105';
+							font-family: "Font Awesome 5 Pro";
+							font-size: 1.6rem;
+							font-weight: 900;
+							color: $primary;
+						}
+					}
+
+					.swiper-button-prev{
+						position: absolute;
+						left: -27px;
+						top: 50%;
+						width: 30px;
+						height: 30px;
+						z-index: 5;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						cursor: pointer;
+						@include translate(0,-50%);
+
+						&::before{
+							content: '\f104';
+							font-family: "Font Awesome 5 Pro";
+							font-size: 1.6rem;
+							font-weight: 900;
+							color: $primary;
+						}
+					}
+
+					.swiper-button-disabled{
+						display: none;
+					}
+				}
+			}
+		}
+	}/* campaignDetail-body */
+
+	.listCardCampaigns{
+
+		.row{
+
+			div[class*="col"]{
+				margin-bottom: 30px;
+			}
+		}
+
+		.loadMoreLoading{
+			margin-top: 10px;
+			display: flex;
+			justify-content: center;
+
+			.rect {
+				height: 25px;
+
+				& > div{
+					background-color: $primary;
+					width: 4px;
+				}
+			}
+		}
+	}
+
+	.report-wrapper{
+
+		.scope{
+
+			.ctn{
+				padding: 25px;
+				flex-direction: row;
+
+				.progress-cricle{
+					margin-right: 10px;
+				}
+
+				.text{
+					
+
+					h4{
+						font-size: 1.6rem;
+						text-transform: capitalize;
+					}
+
+					p{
+						font-size: 2.5rem;
+						color:  getColor(third-text);
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
+
+	.primary-chart{
+		padding-left: 13px;
+		padding-right: 13px;
+
+		.primary-chart__root{
+			display: flex;
+			height: 100%;
+			background-color: getColor(secondary-background);
+
+			.chart-legend{
+				flex: 0 0 auto;
+				width: 200px;
+				height: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				padding-left: 25px;
+
+				.chart-legend__item{
+					flex: 1;
+					width: 100%;
+					display: flex;
+					align-items: center;
+					padding: 0 10px 0 0;
+					cursor: pointer;
+
+					.icon{
+						margin-right: 10px;
+
+						i{
+							width: 28px;
+							font-size: 2.5rem;
+							color: getColor(third-text);
+							@include opacity(.4);
+						}
+					}
+
+					.text{
+
+						h4{
+							color: getColor(third-text);
+							font-size: 1.4rem;
+						}
+
+						p{
+							font-weight: bold;
+							font-size: 1.8rem;
+							color: getColor(third-text);
+							@include opacity(.4);
+						}
+					}
+
+					&.active{
+
+						.icon{
+
+							i{
+								@include opacity(1);
+
+								&.fa-tiktok{
+		                            color: #000;
+		                        }
+
+		                        &.fa-facebook-square{
+		                            color: #385599;
+		                        }
+
+		                        &.fa-youtube{
+		                            color: #f70000;
+		                        }
+
+		                        &.fa-instagram{
+		                            color: #d81f53;
+		                        }
+
+		                        &.fa-twitch{
+		                            color: #8c44f7;
+		                        }
+
+		                        &.fa-twitter{
+		                            color: #1c96e8;
+		                        }
+							}
+						}
+
+						.text{
+
+							p{
+								@include opacity(1);
+								color: getColor(primary-text);
+							}
+						}
+					}
+				}
+			}
+
+			.chart-inner{
+				flex: 1;
+				position: relative;
+				left: 9px;
+			}
+		}
+	}
+
+	.chart-total{
+		padding-left: 300px;
+		display: flex;
+		padding-right: 13px;
+
+		.chart-total__item{
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px 0;
+			cursor: pointer;
+
+			.ctn{
+				text-align: center;
+
+				h4{
+					text-transform: capitalize; 
+					color: getColor(third-text);
+				}
+
+				p{
+					color: getColor(primary-text);
+					font-size: 1.6rem;
+					font-weight: bold;
+				}
+			}
+
+			&.active,&:hover{
+				background-color: getColor(secondary-background);
+			}
+		}
+	}
+
+	.second-report{
+
+		.PlatFormListChart{
+
+			.item{
+				cursor: pointer;
+
+				i{
+					color: #e9ecef;
+				}
+
+				&.active{
+
+                    i{
+                        &.fa-tiktok{
+                            color: #000;
+                        }
+
+                        &.fa-facebook-square{
+                            color: #385599;
+                        }
+
+                        &.fa-youtube{
+                            color: #f70000;
+                        }
+
+                        &.fa-instagram{
+                            color: #d81f53;
+                        }
+
+                        &.fa-twitch{
+                            color: #8c44f7;
+                        }
+
+                        &.fa-twitter{
+                            color: #1c96e8;
+                        }
+                    }
+                }
+			}
+		}
+
+		.chart-bg{
+			background-color: getColor(secondary-background);
+
+			.chart-bg__head{
+				padding: 15px 25px 10px;
+				font-size: 1.6rem;
+				font-weight: bold;
+			}
+
+			.chart-bg__body{
+				height: 43vh;
+			}
+		}
+
+		.chart-table{
+			margin-top: 10px;
+
+			.table-container{
+
+				tr{
+
+					th{
+						font-weight: bold;
+						font-size: 1.5rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin draw-progress($progress) {
+	.progress {
+		.left-side {
+		  	transform: rotate($progress * 3.6deg);
+		}
+
+		@if $progress <= 50 {
+		  	.right-side {
+		    	display: none;
+		  	}
+		} @else {
+		  	clip: rect(auto, auto, auto, auto);
+
+		  	.right-side {
+		    	transform: rotate(180deg);
+		  	}
+		}
+	}
+}
+
+@mixin draw-color($color) {
+	.progress {
+		.half-circle {
+		  	border-color: $color;
+		}
+	}
+}
+
+$cricle-size: 60px;
+
+.progress-cricle{
+	width: $cricle-size;
+	height: $cricle-size;
+	position: relative;
+
+	.icon{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		justify-content: center;
+		align-items: center;
+		display: none;
+
+		&.show{
+			display: flex;
+		}
+	}
+
+	.progress{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		clip: rect(0, $cricle-size, $cricle-size, $cricle-size / 2);
+
+		.half-circle {
+			border: ($cricle-size / 10) solid #3498db;
+			border-radius: 50%;
+			clip: rect(0, $cricle-size / 2, $cricle-size, 0);
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.bg {
+		width: 100%;
+		height: 100%;
+		border: $cricle-size / 10 solid #bdc3c7;
+		border-radius: 50%;
+	}
+
+	&.progress-45 {
+	    @include draw-progress(45);
+	}
+}
+
+@for $i from 1 through 100 {
+	.progress-#{$i} {
+		@include draw-progress($i);
+	}
+}
+
+@each $color, $value in $theme-colors {
+	.progressColor-#{$color} {
+		@include draw-color($value);
+
+		.icon{
+
+			i{
+				color: $value;
+				font-size: 2.5rem;
+			}
+		}
+	}
+}
+
+.apexcharts-tooltip-title{
+	text-align: center;
+	font-weight: bold;
+}

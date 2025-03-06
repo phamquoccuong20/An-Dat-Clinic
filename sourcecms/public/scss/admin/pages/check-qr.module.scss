@@ -1,0 +1,345 @@
+@import 
+	'../../core/abstracts/variables';
+
+.MuiTouchRipple-child {
+  	background-color: getColor(fillSvg) !important;
+}
+
+#tsparticles{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+}
+.scroll_inner{
+	overflow: hidden;
+	overflow-y: scroll;
+	height: 100vh;
+	width: 100vw;
+	// display: block;
+	flex-direction: column;
+	// padding-right: 0px;
+
+	#pageLogin{
+		max-width: 100%;
+		// height: ;
+		// overflow: hidden;
+
+
+		#loginFormSignIn,#loginFormSignUp,#loginFormForgot{
+			display: none;
+
+			&.show{
+				display: block;
+			}
+		}
+		.loginForm{
+			width: inherit;
+			max-width: 100%;
+			color: getColor(primary-text);
+			flex-shrink: 0;
+			.pageLoginLogo{
+				margin-bottom: 24px;
+				margin-top: 24px;
+				img{
+					width: 150px !important;
+				}
+			}
+
+			.box{
+				background-color: #fff;
+				padding: 32px;
+				@include border-radius(8px);
+				@include box-shadow(0 .1rem 1rem .25rem rgba(0,0,0,.05));
+				.scroll_inner{
+					overflow: hidden;
+					overflow-y: scroll;
+					height: 50vh;
+					display: flex;
+					flex-direction: column;
+					padding-right: 0px;
+				}
+				.formGroup{
+					display: flex;
+					margin-bottom: 20px;
+					align-items: center;
+					position: relative;
+					width: inherit;
+
+					[class*="error"]{
+
+						[class^="MuiInputLabel-root"]{
+							color: $danger !important;
+						}
+
+						[class*="Mui-focused"]{
+							color: $danger !important;
+
+							fieldset{
+								border-color: $danger !important;
+							}
+						}
+
+						fieldset{
+							border-color: $danger !important;
+						}
+
+						[class^="MuiFormHelperText-root"]{
+							color: $danger !important;
+							font-size: .8rem;
+						}
+
+						[class^="JoyFormHelperText-root"]{
+							color: $danger !important;
+							font-size: 1.2rem;
+						}
+					}
+
+					[class*="JoyTextField-root"]{
+						width: 100%;
+						label{
+							font-size: 14px;
+							font-weight: 500;
+							margin-bottom: 5px;
+						}
+					}
+
+					[class*="JoyInput-root"]{
+						height: 44px;
+						font-size: 16px;
+						border-color: getColor(primary-border);
+						padding: 0 16px;
+						color: getColor(secondary-text);
+						input{
+							&::placeholder{
+								color: getColor(secondary-text);
+							}
+						}
+						svg{
+							width: 20px;
+							height: 20px;
+						}
+					}
+					
+				}
+
+				[class*="btn"]{
+					height: 44px;
+					font-size: min(1.5rem, 5vw) !important;
+					@include border-radius(8px);
+				}
+				[class*="btn"]:disabled{
+					pointer-events: none; 
+  					background-color: #edf1f2 !important;
+				}
+
+				[class*="cbx"]{
+					background-color: var(--color-secondary-background);
+				}
+
+				[class^="sk-fading-circle"]{
+					margin-left: 10px;
+				}
+
+				[class*="JoyButton-root"]{
+					height: 44px;
+					font-size: 16px;
+					padding: 0 16px;
+				}
+
+				[class*="JoyButton-variantContained"]{
+					color: #fff;
+					background-color: $primary;
+					margin-top: 10px;
+					margin-bottom: 10px;
+					&:hover{
+						background-color: #183FBA;
+					}
+				}
+
+				[class*="JoyButton-variantOutlined"]{
+					margin-top: 16px;
+					color: getColor(secondary-text);
+					text-transform: initial;
+					width: 100%;
+					border-color: getColor(primary-border);
+					&:hover{
+						background: #F9FAFB;
+					}
+				}
+
+				[class*="JoyCheckbox-root"]{
+					label{
+						font-size: 14px;
+						font-weight: 500;
+					}
+					input[type=checkbox]{
+						width: 16px;
+						height: 16px;
+					}
+					--Checkbox-size: 1.5rem;
+				}
+
+				.video_container{
+					position: relative;
+					[id="canvas"]{
+						border: solid 1px #ddd;
+						background-color: black;
+						width: 100%;
+						display: none;
+					}
+				}
+				.showCanvas{
+					[class="scan-region-highlight"] {
+						display: none;
+					}
+					[id="canvas"]{
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 0;
+					}
+					
+				}
+				.outlet{
+					[class*="scan-region-highlight"] {
+						border-radius: 30px;
+						outline: rgba(0, 0, 0, .5) solid 100vmax;
+					}
+					[class*="scan-region-highlight-svg"] {
+						display: none;
+					}
+				}
+			}	
+
+			.LoginHead{
+				margin-bottom: 32px;
+				text-align: center;
+				h3{
+					font-size: min(3rem, 5vw);
+					color: getColor(title-text);
+					font-weight: 00;
+					text-transform: capitalize;
+					margin-bottom: 10px;
+				}
+				p{
+					color: getColor(secondary-text);
+					font-size: min(1.6rem, 3vw);
+					font-weight: 400;
+				}
+			}
+
+			.forgotText{
+				color: #1F4DE2;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: 500;
+
+				&:hover{
+					opacity: 0.8;
+				}
+
+				&.primary{
+					color: #1F4DE2;
+
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.textError{
+				color: red;
+				font-size: 1.3rem;
+				margin-bottom: 10px;
+				visibility: hidden;
+				position: relative;
+				top: 5px;
+				@include opacity(0);
+				@include transition(all 0.2s linear);
+
+				&.show{
+					visibility: inherit;
+					@include opacity(1);
+				}
+			}
+
+			.boxBottom{
+				background-color: #022956;
+				padding: 35px;
+
+				[class*="btn"]{
+					font-size: 1.5rem !important;
+					@include border-radius(8px);
+				}
+
+			}
+		}
+		.btn-google{
+			width: 100%;
+		}
+	}
+}
+
+.dialog {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	h1{
+		font-weight: bold;
+	}
+
+	#imgcenter {
+		display: flex;
+		text-align: center;
+		margin-top: 20px;
+		justify-content: center;
+	  }
+
+	#buttonholder{
+		width: 100%;
+		justify-content: center;
+		display: flex;
+
+	}
+	#confirmbtn {
+		color: #fff;
+		background-color: #2D5DE6;
+		// margin-top: 20px;
+		margin-left: 10px;
+		// display: flex;
+		// justify-content: flex-end;
+		width: 40%;
+	}  
+
+	#cancelbtn {
+		color: #fff;
+		background-color: rgb(206, 9, 9);
+		// margin: 10px;
+		// margin-right: 20px;
+		// display: flex;
+		// justify-content: flex-end;
+		width: 40%;
+	}
+}
+
+#form {
+	.scan-region-highlight {
+		position: absolute;
+		pointer-events: none;
+		width: 355px;
+		height: 355px;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		margin: auto;
+		transform: scaleX(-1);
+	}
+}
+.loading {
+	opacity: 0.4;
+	pointer-events: none;
+}

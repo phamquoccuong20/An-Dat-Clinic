@@ -1,0 +1,17 @@
+.card-tab-wrapper{
+    min-height: 300px;
+}
+.MuiTabs-root{
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-secondary-background);
+}
+
+[class*=MuiButtonBase-root-MuiTab-root]{
+    font-size: 1.3rem;
+    padding: 0 20px;
+}
+
+[class*=MuiButtonBase-root-MuiTab-root].Mui-selected{
+    background-color: #0080F6;
+    color: #ffffff;
+}
