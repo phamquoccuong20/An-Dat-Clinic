@@ -1,0 +1,36 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🧪 Run tests
+        run: npm run test
+
+  deploy:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -X POST https://api.render.com/deploy/srv-d1cge6idbo4c73creaog?key=89MG3vV1fj4${{ secrets.RENDER_API_KEY }}

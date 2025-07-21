@@ -1,6 +1,5 @@
 # Dependency directories
 node_modules
-package-*
 
 # Dist folder (code after build)
 *dist
