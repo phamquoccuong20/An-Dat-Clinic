@@ -2,14 +2,16 @@ name: Node.js CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
 jobs:
-  build-test-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🛎 Checkout code
+      - name: ⬇️ Checkout code
         uses: actions/checkout@v3
 
       - name: 🔧 Setup Node.js
@@ -21,16 +23,14 @@ jobs:
         run: npm install
 
       - name: 🧪 Run tests
-        run: npm test
+        run: npm run test
 
-      - name: 🚀 Deploy via SSH
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_PRIVATE_KEY }}
-          script: |
-            cd /home/youruser/my-app
-            git pull origin main
-            npm install
-            pm2 restart app-name || pm2 start app.js --name app-name
+  deploy:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -X POST https://api.render.com/deploy/srv-d1cge6idbo4c73creaog?key=89MG3vV1fj4${{ secrets.RENDER_API_KEY }}
